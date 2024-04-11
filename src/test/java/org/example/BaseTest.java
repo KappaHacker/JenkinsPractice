@@ -12,12 +12,16 @@ import java.util.Map;
 public class BaseTest {
     @BeforeAll
     static void beforeAll() {
+        System.setProperty("environment", System.getProperty("environment", "prod"));
+
+
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-//        Configuration.browser = "chrome";
-        Configuration.timeout = 10000;
-//        Configuration.holdBrowserOpen = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.remote = System.getProperty("browserRemoteUrl");
+
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 

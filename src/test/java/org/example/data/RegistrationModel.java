@@ -37,5 +37,6 @@ public class RegistrationModel {
         this.city = city;
     }
 
-    // Getters for the fields
+
+
 }
