@@ -1,8 +1,7 @@
 package org.example;
 
 
-import org.aeonbits.owner.ConfigFactory;
-import org.example.config.ProjectConfig;
+
 import org.example.data.RegistrationData;
 import org.example.data.RegistrationModel;
 import org.example.helpers.Attach;
@@ -40,51 +39,7 @@ public class RegistrationTest extends BaseTest {
         Attach.addVideo();
     }
 
-    @Tag("simple")
-    @Test
-    void fillPracticeFormTest() {
-        ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
 
-        step("Open form", () -> {
-            open("/automation-practice-form");
-            $(".fc-button-label").click();
-            executeJavaScript("$('#fixedban').remove()");
-            executeJavaScript("$('footer').remove()");
-        });
-        step("Fill form", () -> {
-            $("#firstName").setValue(projectConfig.firstName());
-            $("#lastName").setValue(projectConfig.lastName());
-            $("#userEmail").setValue("ivanov88@mail.ru");
-            $("#genterWrapper").$(byText("Male")).click();
-            $("#userNumber").setValue("9119991919");
-            $("#dateOfBirthInput").click();
-            $(".react-datepicker__month-select").selectOption(7);
-            $(".react-datepicker__year-select").selectOption(88);
-            $(".react-datepicker__day--023").click();
-            $("#subjectsInput").setValue("Arts").pressEnter();
-            $("#hobbiesWrapper").$(byText("Music")).click();
-            $("#uploadPicture").uploadFromClasspath("screen.jpg");
-            $("#currentAddress").setValue("Test");
-            $("#state").click();
-            $("#stateCity-wrapper").$(byText("Haryana")).click();
-            $("#city").click();
-            $("#stateCity-wrapper").$(byText("Karnal")).click();
-            $("#submit").click();
-        });
-        step("Verify results", () -> {
-            $(".modal-header").shouldHave(text("Thanks for submitting the form"));
-            $(".table-responsive").shouldHave(text(projectConfig.firstName()));
-            $(".table-responsive").shouldHave(text(projectConfig.lastName()));
-            $(".table-responsive").shouldHave(text("ivanov88@mail.ru"));
-            $(".table-responsive").shouldHave(text("Male"));
-            $(".table-responsive").shouldHave(text("9119991919"));
-            $(".table-responsive").shouldHave(text("23 August,1988"));
-            $(".table-responsive").shouldHave(text("Test"));
-            $(".table-responsive").shouldHave(text("screen.jpg"));
-            $(".table-responsive").shouldHave(text("Test"));
-            $(".table-responsive").shouldHave(text("Haryana Karnal"));
-        });
-    }
     @Test
     void successfulRegisterFullDataTest() {
         RegistrationModel registrationFullData = RegistrationData.generateFullRegistrationData();
