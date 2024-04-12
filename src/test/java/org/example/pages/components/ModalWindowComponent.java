@@ -35,4 +35,5 @@ public class ModalWindowComponent {
                         student.dayOfBirth + " " + student.monthOfBirth + "," + student.yearOfBirth);
     }
 
+
 }

@@ -2,6 +2,9 @@ package org.example;
 
 
 
+import com.codeborne.selenide.SelenideElement;
+import org.aeonbits.owner.ConfigFactory;
+import org.example.config.ProjConfig;
 import org.example.data.RegistrationData;
 import org.example.data.RegistrationModel;
 import org.example.helpers.Attach;
@@ -13,6 +16,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -39,7 +43,26 @@ public class RegistrationTest extends BaseTest {
         Attach.addVideo();
     }
 
+    @Test
+    void minimalRegistrationTest() {
+        ProjConfig projConfig = ConfigFactory.create(ProjConfig.class);
+        registrationPage.openPage();
+        SelenideElement bannerRoot = $(".fc-consent-root");
+        if (bannerRoot.isDisplayed()) {
+            bannerRoot.$(byText("Consent")).click();
+        }
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        registrationPage.setFirstName(projConfig.firstName());
+        registrationPage.setLastName(projConfig.lastName());
+        registrationPage.setGender("Other");
+        registrationPage.setUserNumber("1234567890");
+        registrationPage.submit();
 
+        $(".modal-dialog").should(appear);
+        modalWindowComponent.checkMinStudentFields(new RegistrationModel( "Alex", "Egorov", "Other", "1234567890"));
+
+    }
     @Test
     void successfulRegisterFullDataTest() {
         RegistrationModel registrationFullData = RegistrationData.generateFullRegistrationData();

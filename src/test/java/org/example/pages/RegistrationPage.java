@@ -136,4 +136,5 @@ public class RegistrationPage {
         setUserNumber(registrationModel.phone).
                 setDateOfBirth(registrationModel.dayOfBirth, registrationModel.monthOfBirth, registrationModel.yearOfBirth);
     }
+
 }

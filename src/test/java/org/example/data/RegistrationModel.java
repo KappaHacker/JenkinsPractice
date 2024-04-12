@@ -36,6 +36,14 @@ public class RegistrationModel {
         this.state = state;
         this.city = city;
     }
+    public RegistrationModel(String name, String lastName, String gender, String phone) {
+
+        this.name = name;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.phone = phone;
+
+    }
 
 
 
