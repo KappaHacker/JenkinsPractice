@@ -61,7 +61,7 @@ public class RegistrationTest extends BaseTest {
         registrationPage.submit();
 
         $(".modal-dialog").should(appear);
-        modalWindowComponent.checkMinStudentFields(new RegistrationModel( "Alex", "Egorov", "Other", "1234567890"));
+        modalWindowComponent.checkMinStudentFields(new RegistrationModel( projConfig.firstName(), projConfig.lastName(), "Other", "1234567890"));
 
     }
     @Test
