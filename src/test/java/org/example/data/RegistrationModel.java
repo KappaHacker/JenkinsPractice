@@ -43,6 +43,16 @@ public class RegistrationModel {
         this.gender = gender;
         this.phone = phone;
 
+        email = null;
+        yearOfBirth = 0;
+        monthOfBirth = null;
+        dayOfBirth = null;
+        subjects = new String[0];
+        hobbies = new String[0];
+        picture = null;
+        address = null;
+        state = null;
+        city = null;
     }
 
 
