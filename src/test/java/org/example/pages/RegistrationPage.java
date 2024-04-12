@@ -133,8 +133,8 @@ public class RegistrationPage {
         setFirstName(registrationModel.name);
         setLastName(registrationModel.lastName);
         setGender(registrationModel.gender);
-        setUserNumber(registrationModel.phone).
-                setDateOfBirth(registrationModel.dayOfBirth, registrationModel.monthOfBirth, registrationModel.yearOfBirth);
+        setUserNumber(registrationModel.phone);
+               // setDateOfBirth(registrationModel.dayOfBirth, registrationModel.monthOfBirth, registrationModel.yearOfBirth);
     }
 
 }
