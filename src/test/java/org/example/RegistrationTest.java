@@ -43,6 +43,7 @@ public class RegistrationTest extends BaseTest {
         Attach.addVideo();
     }
 
+    @Tag("steam_tests")
     @Test
     void minimalRegistrationTest() {
         ProjConfig projConfig = ConfigFactory.create(ProjConfig.class);
