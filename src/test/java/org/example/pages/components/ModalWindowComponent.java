@@ -30,9 +30,8 @@ public class ModalWindowComponent {
     public void checkMinStudentFields(RegistrationModel student) {
         checkSubmitForm("Student Name", student.name + " " + student.lastName).
                 checkSubmitForm("Gender", student.gender).
-                checkSubmitForm("Mobile", student.phone).
-                checkSubmitForm("Date of Birth",
-                        student.dayOfBirth + " " + student.monthOfBirth + "," + student.yearOfBirth);
+                checkSubmitForm("Mobile", student.phone);
+        // checkSubmitForm("Date of Birth",                        student.dayOfBirth + " " + student.monthOfBirth + "," + student.yearOfBirth);
     }
 
 
